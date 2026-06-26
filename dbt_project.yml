@@ -2,7 +2,7 @@
 # Name your project! Project names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'jaffle_shop'
+name: 'dbt_fundamentals'
 version: '1.0.0'
 config-version: 2
 
@@ -32,12 +32,21 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as tables. These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 
-models:
-  jaffle_shop:
-    staging:
-      +materialized: view
-    marts:
-      +materialized: table
+# previous version
+# models:
+#   jaffle_shop:
+#     staging:
+#       +materialized: view
+#     marts:
+#       +materialized: table
 
+models:
+  dbt_fundamentals:
+    +dataset: dbt_fundamentals  # Forces ALL models in this repo into the 'dbt_fundamentals' dataset
+    
+    staging:
+      +materialized: view       # Models inside /staging will be built as views
+    marts:
+      +materialized: table      # Models inside /marts will be built as tables
 
     
